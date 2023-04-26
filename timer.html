@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <main class="h-screen bg-gradient-to-tr from-red-400 to-amber-200">
+        <h2 class="flex justify-center p-40 text-[50px] bg-zinc-800 text-white">
+            <span id="hour"  class="bg-red-300 p-2 rounded-md">12</span>:
+            <span id="minute" class="bg-gray-600 p-2 rounded-md">55</span>:
+            <span id="second" class="bg-yellow-300 p-2 rounded-md">33</span>:
+            <span id="milisecond" class="bg-pink-200 p-2 rounded-md"></span>
+            <span id="time" class="bg-blue-700 p-2 rounded-md">PM</span>
+        </h2>
+    </main>
+
+    <script>
+        const hour = document.getElementById('hour')
+        const min = document.getElementById('minute')
+        const sec = document.getElementById('second')
+        const ampm = document.getElementById('time')
+        const mils = document.getElementById('milisecond')
+
+
+        function callTime(){
+            const h = new Date().getHours()
+            const m = new Date().getMinutes()
+            const s = new Date().getSeconds()
+            const ms = new Date().getMilliseconds()
+
+            hour.textContent = h
+            min.textContent = m
+            sec.textContent = s < 10 ? `0${s}` : s
+            ampm.textContent = h < 12 ? "Am" : "PM"
+            mils.textContent = ms 
+            setTimeout(()=> callTime(), 1000)
+            
+            eTime()
+        }
+        callTime()
+    </script>
+</body>
+</html>
